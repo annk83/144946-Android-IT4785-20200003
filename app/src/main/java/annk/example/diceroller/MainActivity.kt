@@ -3,9 +3,8 @@ package annk.example.diceroller
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
+import android.widget.ImageView
 import android.widget.Toast
-import org.w3c.dom.Text
 import java.util.Random
 
 class MainActivity : AppCompatActivity() {
@@ -16,11 +15,13 @@ class MainActivity : AppCompatActivity() {
 
         //Get Views
         val bnt : Button = findViewById(R.id.button2)
-        val lab : TextView = findViewById(R.id.textView)
-        val lab1 : TextView = findViewById(R.id.textView2)
-
+        val lab : ImageView = findViewById(R.id.imageView4)
+        val lab1 : ImageView = findViewById(R.id.imageView5)
         //Random for the dice
         val rand = Random();
+        //Dices
+        val dice1 = DiceModel(rand)
+        val dice2 = DiceModel(rand)
 
         bnt.setOnClickListener() {
             //Show toast from bottom of screen
@@ -28,8 +29,8 @@ class MainActivity : AppCompatActivity() {
             toast.show()
 
             //Set text to random
-            lab.setText((rand.nextInt(6)+1).toString());
-            lab1.setText((rand.nextInt(6)+1).toString());
+            lab.setImageResource(dice1.roll())
+            lab1.setImageResource(dice2.roll())
         }
     }
 }
